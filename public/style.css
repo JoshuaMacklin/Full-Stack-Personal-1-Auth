@@ -1,0 +1,46 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  text-align: center;
+  background: rgba(238,238,238,1.0);
+  padding-left: 18px;
+  padding-right: 18px;
+}
+img{
+  height: 200px;
+}
+.id{
+  display: none;
+}
+.red{
+  color: red;
+}
+.redb{
+  background: red;
+}
+.redb:hover{
+    background: red;
+}
+.daBigOne{
+  padding-top: 6px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(128,128,128,0.5);
+  border-top: 1px solid rgba(128,128,128,0.5);
+}
+.bookTitle{
+  font-size: 20px;
+  padding: 3px;
+}
+li{
+  list-style: none;
+}
+input,
+button{
+  border-radius: 21px;
+  border: 1px solid grey;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 3px;
+  width: 200px;
+  background-color: white;
+}

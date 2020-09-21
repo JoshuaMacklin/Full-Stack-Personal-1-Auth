@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <title>Banned Book Reviews</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="text-center">
+        <h1></span>Banned Book Reviews</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <!-- <a href="/random" class="btn btn-default btn-sm">Random Review</a> -->
+    </div>
+
+    <div class="row">
+
+          <section class='right'>
+            <h3>Book Reviews</h3>
+            <ul class="messages">
+            <% for(var i=0; i<messages.length; i++) {%>
+              <ul class="daBigOne">
+                <li class="message">
+                  <span class="id"><%= messages[i]._id %></span>
+                  <h3 class="bookTitle"><%= messages[i].book %></h3>
+                </li>
+                <li class="message">
+                  <span><%= messages[i].review %></span> -Anonymous
+                </li>
+                <li class="message">
+                  <a href=<%= messages[i].link %> target="_blank">Link to Book</a>
+                  <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                </li>
+              </ul>
+            <% } %>
+            </ul>
+          </section>
+
+          <section class='left'>
+            <h3>Add a review</h3>
+          <% if (user.local.email) { %>
+            <form action="/messages" method="POST">
+            <li>
+              <input class="id" type="userID" value="<%= user._id %>" name="userID">
+            </li>
+            <li>
+              <input type="text" placeholder="Book Name" name="book">
+            </li>
+            <li>
+              <input type="text" placeholder="Enter your Review" name="review">
+            </li>
+            <li>
+              <input type="text" placeholder="Link to Banned Book" name="link">
+            </li>
+              <button type="submit">Submit</button>
+            </li>
+            </form>
+          </section>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
