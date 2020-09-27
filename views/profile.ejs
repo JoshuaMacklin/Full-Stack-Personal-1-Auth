@@ -24,11 +24,12 @@
             <% for(var i=0; i<messages.length; i++) {%>
               <ul class="daBigOne">
                 <li class="message">
-                  <span class="id"><%= messages[i]._id %></span>
-                  <h3 class="bookTitle"><%= messages[i].book %></h3>
+                  <img src="<%= messages[i].pic %>" alt="">
+                  <h3 class="id"><%= messages[i]._id %></h3>
+                  <h3 class="bookTitle"><%= messages[i].book %>, <%= messages[i].author %></h3>
                 </li>
                 <li class="message">
-                  <span><%= messages[i].review %></span> -Anonymous
+                  <span>"<%= messages[i].review %>"</span> -Anonymous
                 </li>
                 <li class="message">
                   <a href=<%= messages[i].link %> target="_blank">Link to Book</a>
@@ -42,20 +43,24 @@
           <section class='left'>
             <h3>Add a review</h3>
           <% if (user.local.email) { %>
+            <h4 id='check'></h4>
             <form action="/messages" method="POST">
             <li>
               <input class="id" type="userID" value="<%= user._id %>" name="userID">
             </li>
             <li>
-              <input type="text" placeholder="Book Name" name="book">
+              <input type="text" name="pic" value="" class="id" id="pic">
+              <input id="book" type="text" placeholder="Book Name" name="book">
+              <button type="button" name="button" onclick="check()">Book Info Search</button>
             </li>
             <li>
-              <input type="text" placeholder="Enter your Review" name="review">
+              <input class="id" id="author" type="text" name="author" value="">
+              <input id='review' type="text" placeholder="Enter your Review" name="review">
             </li>
             <li>
-              <input type="text" placeholder="Link to Banned Book" name="link">
+              <input class="id" id="link" type="text" placeholder="Link to Banned Book" name="link">
             </li>
-              <button type="submit">Submit</button>
+              <button id="submit" type="submit">Submit</button>
             </li>
             </form>
           </section>

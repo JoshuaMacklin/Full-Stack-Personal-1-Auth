@@ -44,3 +44,11 @@ button{
   width: 200px;
   background-color: white;
 }
+#review{
+  width: 410px;
+  height: 100px;
+  text-align: center;
+}
+#check{
+  color: green;
+}

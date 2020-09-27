@@ -1,4 +1,5 @@
 module.exports = function(app, passport, db) {
+  const fetch = require("node-fetch");
 
   // normal routes ===============================================================
 
@@ -17,16 +18,17 @@ module.exports = function(app, passport, db) {
       })
     })
   });
-  // RANDOM SECTION =========================
-  app.get('/random', isLoggedIn, function(req, res) {
-    db.collection('messages').find().toArray((err, result) => {
-      if (err) return console.log(err)
-      res.render('random.ejs', {
-        user: req.user,
-        messages: result
-      })
-    })
-  });
+
+  app.get('/messages', function (req, res) {
+   const book = req.query.book
+   console.log(book)
+   fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}`)
+     .then(res => res.json())
+     .then(data => {
+       res.end(JSON.stringify(data));
+       console.log(data.items[0])
+     })
+ });
 
   // LOGOUT ==============================
   app.get('/logout', function(req, res) {
@@ -40,8 +42,10 @@ module.exports = function(app, passport, db) {
     db.collection('messages').save({
       userID: req.body.userID,
       book: req.body.book,
+      author: req.body.author,
       review: req.body.review,
-      link: req.body.link
+      link: req.body.link,
+      pic: req.body.pic,
     }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
@@ -51,7 +55,6 @@ module.exports = function(app, passport, db) {
 
   app.delete('/messages', (req, res) => {
     var mongodb = require('mongodb')
-    // db.collection('messages').findOneAndDelete({name: req.body.name, item: req.body.item, amount: req.body.amount}, (err, result) => {
     db.collection('messages').deleteOne({
       _id: new mongodb.ObjectID(req.body.id)
     }, (err, result) => {
