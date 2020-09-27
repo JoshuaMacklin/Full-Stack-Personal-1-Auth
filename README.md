@@ -5,7 +5,7 @@ I created a Banned Book Review website where a user can write a review on a book
 **Link to project:** Coming Soon!
 
 ![alt tag](https://i.imgur.com/8ufrx5i.png)
-![alt tag](https://i.imgur.com/sYPqzeN.png)
+![alt tag](https://i.imgur.com/5eQLnHV.png)
 
 ## How It's Made:
 
